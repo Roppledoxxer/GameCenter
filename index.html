@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roppledoxxer-GameCenter</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1b1b1f, #2b2e3b);
+      color: #f1f1f1;
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+    }
+
+    .game-grid {
+      max-width: 900px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #2f3240;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 0 18px rgba(0,0,0,0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 28px rgba(0,0,0,0.55);
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: #87b0ff;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background: #4a73dd;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .card a:hover {
+      background: #3b5eb8;
+    }
+  </style>
+</head>
+<body>
+  <h1>Roppledoxxer-GameCenter</h1>
+
+  <div class="game-grid">
+    <div class="card">
+      <div class="card-title">DeadShape</div>
+      <p>A fast-paced shape survival game.</p>
+      <a href="https://roppledoxxer.github.io/DeadShape/" target="_blank">Play</a>
+    </div>
+
+    <!-- Add more games below by copying this block -->
+
+    <div class="card">
+      <div class="card-title">Pocket Garden</div>
+      <p>A small cozy gardening game.</p>
+      <a href="https://roppledoxxer.github.io/Pocket-Garden.Game/" target="_blank">Play</a>
+    </div>
+
+    <div class="card">
+      <div class="card-title">RADDOLL Lite</div>
+      <p>Physics-based ragdoll fun.</p>
+      <a href="https://roppledoxxer.github.io/RADDOLL.lite-matter.js/" target="_blank">Play</a>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Retro Pong</div>
+      <p>Classic pong with a retro vibe.</p>
+      <a href="https://roppledoxxer.github.io/Retro-Pong/" target="_blank">Play</a>
+    </div>
+   
+    <div class="card">
+      <div class="card-title">Snake Ultimate</div>
+      <p>A classic browser game with 1998 vibes.</p>
+      <a href="https://roppledoxxer.github.io/snake.web.game/" target="_blank">Play</a>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Tic-Tac-Toe</div>
+      <p>A yet so simple, yet so challenging game.</p>
+      <a href="https://roppledoxxer.github.io/Tic-Tac-Toe/" target="_blank">Play</a>
+    </div>
+
+  </div>
+</body>
+</html>
