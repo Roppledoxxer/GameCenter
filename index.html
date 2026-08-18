@@ -3,159 +3,802 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roppledoxxer-GameCenter</title>
+
+  <title>Roppledoxxer GameCenter</title>
+
+  <meta
+    name="description"
+    content="Roppledoxxer GameCenter — games and projects created by Roppledoxxer."
+  />
+
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background: linear-gradient(135deg, #1b1b1f, #2b2e3b);
-      color: #f1f1f1;
-      padding: 40px;
+      background: #111318;
+      color: #f5f7fb;
+      line-height: 1.6;
     }
 
-    h1 {
-      text-align: center;
-      font-size: 3rem;
-      margin-bottom: 30px;
-      letter-spacing: 2px;
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background: rgba(17, 19, 24, 0.92);
+      backdrop-filter: blur(10px);
+
+      border-bottom: 1px solid #292d36;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 16px 7%;
     }
+
+    .logo {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: #6f8cff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      color: #aeb4c2;
+      text-decoration: none;
+      padding: 7px 12px;
+      border-radius: 7px;
+      transition: 0.2s ease;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+      background: #222630;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      max-width: 1000px;
+      margin: auto;
+      padding: 90px 25px 65px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 7vw, 4.2rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+
+      color: #ffffff;
+    }
+
+    .hero h1 span {
+      color: #718cff;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+
+      color: #9da4b4;
+      font-size: 1.05rem;
+    }
+
+    .creator {
+      display: inline-block;
+
+      margin-top: 20px;
+      padding: 6px 12px;
+
+      border: 1px solid #303746;
+      border-radius: 999px;
+
+      color: #9eafff;
+      background: #191c24;
+
+      font-size: 0.85rem;
+    }
+
+    /* =========================
+       GENERAL SECTIONS
+    ========================= */
+
+    .section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 25px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #7f8797;
+      margin-bottom: 35px;
+    }
+
+    /* =========================
+       GAMES
+    ========================= */
 
     .game-grid {
-      max-width: 900px;
-      margin: auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      gap: 18px;
     }
 
     .card {
-      background: #2f3240;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 0 18px rgba(0,0,0,0.4);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background: #191c23;
+      border: 1px solid #292d37;
+      border-radius: 12px;
+      padding: 21px;
+
+      display: flex;
+      flex-direction: column;
+
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
     }
 
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 0 28px rgba(0,0,0,0.55);
+      transform: translateY(-4px);
+      background: #1d2028;
+      border-color: #3a4560;
     }
 
     .card-title {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
-      color: #87b0ff;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
     }
 
-    .card a {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 15px;
-      background: #4a73dd;
+    .card-description {
+      color: #9da4b3;
+      font-size: 0.94rem;
+      flex-grow: 1;
+    }
+
+    .card-copyright {
+      color: #626978;
+      font-size: 0.76rem;
+      margin-top: 13px;
+    }
+
+    .play-button {
+      margin-top: 14px;
+
+      padding: 9px 14px;
+
+      background: #5872e8;
       color: white;
-      border-radius: 10px;
+
+      text-align: center;
       text-decoration: none;
-      transition: background 0.2s;
+
+      border-radius: 8px;
+
+      font-size: 0.9rem;
+      font-weight: 600;
+
+      transition: 0.2s ease;
     }
 
-    .card a:hover {
-      background: #3b5eb8;
+    .play-button:hover {
+      background: #6a82f1;
+    }
+
+    /* =========================
+       ABOUT / CONTENT BOXES
+    ========================= */
+
+    .content-box {
+      max-width: 850px;
+      margin: auto;
+
+      background: #191c23;
+      border: 1px solid #292d37;
+      border-radius: 12px;
+
+      padding: 30px;
+    }
+
+    .content-box h3 {
+      color: #ffffff;
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .content-box p {
+      color: #9da4b3;
+      margin-bottom: 18px;
+    }
+
+    .content-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight {
+      color: #8ea2ff;
+      font-weight: 600;
+    }
+
+    /* =========================
+       INFO CARDS
+    ========================= */
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .info-card {
+      background: #191c23;
+      border: 1px solid #292d37;
+      border-radius: 12px;
+      padding: 23px;
+    }
+
+    .info-card h3 {
+      font-size: 1.05rem;
+      color: #ffffff;
+      margin-bottom: 7px;
+    }
+
+    .info-card p {
+      color: #858d9d;
+      font-size: 0.92rem;
+    }
+
+    /* =========================
+       COPYRIGHT
+    ========================= */
+
+    .copyright {
+      text-align: center;
+    }
+
+    .copyright strong {
+      display: block;
+      color: #ffffff;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .copyright p {
+      max-width: 800px;
+      margin: 0 auto 12px;
+      color: #8e96a6;
+      font-size: 0.92rem;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      margin-top: 40px;
+
+      border-top: 1px solid #292d36;
+
+      padding: 30px 20px;
+
+      text-align: center;
+
+      color: #656c7a;
+      font-size: 0.85rem;
+    }
+
+    .footer-brand {
+      color: #ffffff;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .footer-links {
+      margin: 12px 0 16px;
+    }
+
+    .footer-links a {
+      color: #777f8f;
+      text-decoration: none;
+      margin: 0 8px;
+      transition: 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #aab8ff;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 650px) {
+      .navbar {
+        padding: 14px 18px;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        padding-top: 65px;
+      }
+
+      .section {
+        padding: 45px 18px;
+      }
+
+      .content-box {
+        padding: 23px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <h1>Roppledoxxer-GameCenter</h1>
 
-  <div class="game-grid">
-    <div class="card">
-      <div class="card-title">DeadShape</div>
-      <p>A fast-paced shape survival game.</p>
-      <a href="https://roppledoxxer.github.io/DeadShape/" target="_blank">Play</a>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <span>Roppledoxxer</span> GameCenter
     </div>
 
-    <!-- Add more games below by copying this block -->
+    <div class="nav-links">
+      <a href="#games">Games</a>
+      <a href="#about">About</a>
+      <a href="#copyright">Copyright</a>
+      <a href="#info">Info</a>
+    </div>
+  </nav>
 
-    <div class="card">
-      <div class="card-title">Pocket Garden</div>
-      <p>A small cozy gardening game.</p>
-      <a href="https://roppledoxxer.github.io/Pocket-Garden.Game/" target="_blank">Play</a>
+
+  <!-- HERO -->
+  <header class="hero">
+    <h1>
+      Roppledoxxer<span>GameCenter</span>
+    </h1>
+
+    <p>
+      A collection of games, experiments, and projects built by
+      Roppledoxxer.
+    </p>
+
+    <div class="creator">
+      🎮 Created by Roppledoxxer
+    </div>
+  </header>
+
+
+  <!-- GAMES -->
+  <section class="section" id="games">
+
+    <h2 class="section-title">Games</h2>
+
+    <p class="section-subtitle">
+      Pick a game and start playing.
+    </p>
+
+    <div class="game-grid">
+
+      <div class="card">
+        <div class="card-title">DeadShape</div>
+        <p class="card-description">
+          A fast-paced shape survival game.
+        </p>
+        <div class="card-copyright">
+          © <span class="year"></span> Roppledoxxer
+        </div>
+        <a class="play-button"
+           href="https://roppledoxxer.github.io/DeadShape/"
+           target="_blank"
+           rel="noopener">
+          Play
+        </a>
+      </div>
+
+
+      <div class="card">
+        <div class="card-title">Pocket Garden</div>
+        <p class="card-description">
+          A small cozy gardening game.
+        </p>
+        <div class="card-copyright">
+          © <span class="year"></span> Roppledoxxer
+        </div>
+        <a class="play-button"
+           href="https://roppledoxxer.github.io/Pocket-Garden.Game/"
+           target="_blank"
+           rel="noopener">
+          Play
+        </a>
+      </div>
+
+
+      <div class="card">
+        <div class="card-title">RADDOLL Lite</div>
+        <p class="card-description">
+          Physics-based ragdoll fun powered by Matter.js.
+        </p>
+        <div class="card-copyright">
+          © <span class="year"></span> Roppledoxxer
+        </div>
+        <a class="play-button"
+           href="https://roppledoxxer.github.io/RADDOLL.lite-matter.js/"
+           target="_blank"
+           rel="noopener">
+          Play
+        </a>
+      </div>
+
+
+      <div class="card">
+        <div class="card-title">Retro Pong</div>
+        <p class="card-description">
+          Classic Pong with a retro arcade feel.
+        </p>
+        <div class="card-copyright">
+          © <span class="year"></span> Roppledoxxer
+        </div>
+        <a class="play-button"
+           href="https://roppledoxxer.github.io/Retro-Pong/"
+           target="_blank"
+           rel="noopener">
+          Play
+        </a>
+      </div>
+
+
+      <div class="card">
+        <div class="card-title">Snake Ultimate</div>
+        <p class="card-description">
+          A classic snake game with old-school 1998 vibes.
+        </p>
+        <div class="card-copyright">
+          © <span class="year"></span> Roppledoxxer
+        </div>
+        <a class="play-button"
+           href="https://roppledoxxer.github.io/snake.web.game/"
+           target="_blank"
+           rel="noopener">
+          Play
+        </a>
+      </div>
+
+
+      <div class="card">
+        <div class="card-title">Tic-Tac-Toe</div>
+        <p class="card-description">
+          Simple to understand. Harder to master.
+        </p>
+        <div class="card-copyright">
+          © <span class="year"></span> Roppledoxxer
+        </div>
+        <a class="play-button"
+           href="https://roppledoxxer.github.io/Tic-Tac-Toe/"
+           target="_blank"
+           rel="noopener">
+          Play
+        </a>
+      </div>
+
+
+      <div class="card">
+        <div class="card-title">BabylonBloxxel</div>
+        <p class="card-description">
+          A browser-based block world inspired by classic voxel games.
+        </p>
+        <div class="card-copyright">
+          © <span class="year"></span> Roppledoxxer
+        </div>
+        <a class="play-button"
+           href="https://roppledoxxer.github.io/BabylonBloxxel/"
+           target="_blank"
+           rel="noopener">
+          Play
+        </a>
+      </div>
+
+
+      <div class="card">
+        <div class="card-title">Babylon World</div>
+        <p class="card-description">
+          A mini open-world sandbox full of chaos.
+        </p>
+        <div class="card-copyright">
+          © <span class="year"></span> Roppledoxxer
+        </div>
+        <a class="play-button"
+           href="https://roppledoxxer.github.io/Babylon-World/"
+           target="_blank"
+           rel="noopener">
+          Play
+        </a>
+      </div>
+
+
+      <div class="card">
+        <div class="card-title">RISPERIDONE</div>
+        <p class="card-description">
+          Horror, static, hallucinations, and death angels.
+        </p>
+        <div class="card-copyright">
+          © <span class="year"></span> Roppledoxxer
+        </div>
+        <a class="play-button"
+           href="https://roppledoxxer.github.io/Risperidone/"
+           target="_blank"
+           rel="noopener">
+          Play
+        </a>
+      </div>
+
+
+      <div class="card">
+        <div class="card-title">Shapes n' Wars</div>
+        <p class="card-description">
+          A strategic chess-inspired game built around shapes.
+        </p>
+        <div class="card-copyright">
+          © <span class="year"></span> Roppledoxxer
+        </div>
+        <a class="play-button"
+           href="https://roppledoxxer.github.io/Shapes-n-wars/"
+           target="_blank"
+           rel="noopener">
+          Play
+        </a>
+      </div>
+
+
+      <div class="card">
+        <div class="card-title">Warstorm</div>
+        <p class="card-description">
+          A 3D FPS set on a battlefield.
+        </p>
+        <div class="card-copyright">
+          © <span class="year"></span> Roppledoxxer
+        </div>
+        <a class="play-button"
+           href="https://war-storm-tactics.base44.app"
+           target="_blank"
+           rel="noopener">
+          Play
+        </a>
+      </div>
+
+
+      <div class="card">
+        <div class="card-title">Train Tycoon</div>
+        <p class="card-description">
+          Build your railway empire and manage your trains.
+        </p>
+        <div class="card-copyright">
+          © <span class="year"></span> Roppledoxxer
+        </div>
+        <a class="play-button"
+           href="https://roppledoxxer.github.io/TrainTycoon/"
+           target="_blank"
+           rel="noopener">
+          Play
+        </a>
+      </div>
+
+
+      <div class="card">
+        <div class="card-title">Roadside Zombies</div>
+        <p class="card-description">
+          A 2D zombie survival game for PC and mobile.
+        </p>
+        <div class="card-copyright">
+          © <span class="year"></span> Roppledoxxer
+        </div>
+        <a class="play-button"
+           href="https://roppledoxxer.github.io/Roadside-Zombies/"
+           target="_blank"
+           rel="noopener">
+          Play
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+
+    <h2 class="section-title">About</h2>
+
+    <p class="section-subtitle">
+      Who is behind the GameCenter?
+    </p>
+
+    <div class="content-box">
+
+      <h3>Hey, I'm Roppledoxxer.</h3>
+
+      <p>
+        I'm an independent game creator and programmer who builds
+        games and interactive projects for the web.
+      </p>
+
+      <p>
+        As you can tell, I'm a very small content creator! And this GameCenter is where I keep my projects in one place.
+        You'll find everything from small arcade games to 3D worlds,
+        horror games, physics experiments, strategy games, and
+        survival games.
+      </p>
+
+      <p>
+        Every project is something I built myself and experimented
+        with along the way. Some are simple, some are ambitious,
+        and some are still being improved.
+      </p>
+
+      <p>
+        The main goal is simple:
+        <span class="highlight">build cool things and have fun making them.</span>
+      </p>
+
     </div>
 
-    <div class="card">
-      <div class="card-title">RADDOLL Lite</div>
-      <p>Physics-based ragdoll fun.</p>
-      <a href="https://roppledoxxer.github.io/RADDOLL.lite-matter.js/" target="_blank">Play</a>
+  </section>
+
+
+  <!-- COPYRIGHT -->
+  <section class="section" id="copyright">
+
+    <h2 class="section-title">Copyright</h2>
+
+    <p class="section-subtitle">
+      Ownership and usage information.
+    </p>
+
+    <div class="content-box copyright">
+
+      <strong>
+        © <span class="year"></span> Roppledoxxer
+      </strong>
+
+      <p>
+        Unless otherwise stated, the original games, source code,
+        designs, names, artwork, characters, and other original
+        content created for Roppledoxxer GameCenter belong to
+        Roppledoxxer.
+      </p>
+
+      <p>
+        The games may be played through their official links.
+        Re-uploading, redistributing, selling, or claiming the
+        original games or content as your own is not permitted
+        without permission.
+      </p>
+
+      <p>
+        Third-party libraries, engines, services, and other external
+        technologies remain the property of their respective owners
+        and are subject to their own licenses.
+      </p>
+
     </div>
 
-    <div class="card">
-      <div class="card-title">Retro Pong</div>
-      <p>Classic pong with a retro vibe.</p>
-      <a href="https://roppledoxxer.github.io/Retro-Pong/" target="_blank">Play</a>
-    </div>
-   
-    <div class="card">
-      <div class="card-title">Snake Ultimate</div>
-      <p>A classic browser game with 1998 vibes.</p>
-      <a href="https://roppledoxxer.github.io/snake.web.game/" target="_blank">Play</a>
+  </section>
+
+
+  <!-- INFO -->
+  <section class="section" id="info">
+
+    <h2 class="section-title">GameCenter Info</h2>
+
+    <p class="section-subtitle">
+      A few things about the site.
+    </p>
+
+    <div class="info-grid">
+
+      <div class="info-card">
+        <h3>🎮 Original Games</h3>
+        <p>
+          The projects featured here are created by Roppledoxxer.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>🌐 Play in Browser</h3>
+        <p>
+          Most projects can be played directly from your browser.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>🛠️ Updates</h3>
+        <p>
+          Games may receive new features, improvements, and fixes.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>💡 More to Come</h3>
+        <p>
+          The GameCenter can grow as new projects are created.
+        </p>
+      </div>
+
     </div>
 
-    <div class="card">
-      <div class="card-title">Tic-Tac-Toe</div>
-      <p>A yet so simple, yet so challenging game.</p>
-      <a href="https://roppledoxxer.github.io/Tic-Tac-Toe/" target="_blank">Play</a>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-brand">
+      Roppledoxxer GameCenter
     </div>
 
-    <div class="card">
-      <div class="card-title">BabylonBloxxel</div>
-      <p>A block world based off Minecraft Classic, fully playable on browser.</p>
-      <a href="https://roppledoxxer.github.io/BabylonBloxxel/" target="_blank">Play</a>
+    <div class="footer-links">
+      <a href="#games">Games</a>
+      <a href="#about">About</a>
+      <a href="#copyright">Copyright</a>
+      <a href="#info">Info</a>
     </div>
 
-    <div class="card">
-      <div class="card-title">Babylon World</div>
-      <p>A Mini GTA. Make chaos, and have fun.</p>
-      <a href="https://roppledoxxer.github.io/Babylon-World/" target="_blank">Play</a>
-    </div>
+    <p>
+      © <span class="year"></span> Roppledoxxer. All Rights Reserved.
+    </p>
 
-     <div class="card">
-      <div class="card-title">RISPERIDONE</div>
-      <p>A horror game about death angels, static, and hallucinations.</p>
-      <a href="https://roppledoxxer.github.io/Risperidone/" target="_blank">Play</a>
-    </div>
+  </footer>
 
-    <div class="card">
-      <div class="card-title">Shapes n' wars</div>
-      <p>A strategic chess based game. Fun if you're bored.</p>
-      <a href="https://roppledoxxer.github.io/Shapes-n-wars/" target="_blank">Play</a>
-    </div>
 
-    <div class="card">
-      <div class="card-title">Warstorm</div>
-      <p>A 3d FPS game, in a battlefield.</p>
-      <a href="https://war-storm-tactics.base44.app" target="_blank">Play</a>
-    </div>
+  <script>
+    const year = new Date().getFullYear();
 
-    
-    <div class="card">
-      <div class="card-title">Train Tycoon</div>
-      <p>A train tycoon, great when you're bored!</p>
-      <a href="https://roppledoxxer.github.io/TrainTycoon/" target="_blank">Play</a>
-    </div>
+    document.querySelectorAll(".year").forEach(element => {
+      element.textContent = year;
+    });
+  </script>
 
-    <div class="card">
-      <div class="card-title">Roadside Zombies</div>
-      <p>A 2d Zombie survival game. PC or Mobile works fine.</p>
-      <a href="https://roppledoxxer.github.io/Roadside-Zombies/" target="_blank">Play</a>
-    </div>
- 
-  </div>
-<footer style="margin-top:40px; text-align:center; color:#ccc; font-size:0.9rem; opacity:0.8;">
-&copy; 2025 Roppledoxxer. All Rights Reserved.
-</footer>
 </body>
 </html>
+```
